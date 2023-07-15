@@ -1,0 +1,11 @@
+.searchBar {
+    width: 100%;
+    max-width: 100%;
+  }
+  
+  @media (max-width: 600px) {
+    .searchBar {
+      max-width: 100%;
+    }
+  }
+  

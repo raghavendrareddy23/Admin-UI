@@ -1,0 +1,35 @@
+.PaginationButtonsContainer {
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
+  }
+  
+  .PaginationButton {
+    background-color: rgb(1, 69, 254);
+    color: white;
+    border-radius: 50%;
+    margin: 0 0.25rem;
+    padding: 0.5rem;
+    transition: background-color 0.3s ease;
+  }
+  
+  .PaginationButton:hover {
+    background-color: white;
+    color: blue;
+  }
+  
+  .PaginationButton.ActivePage {
+    background-color: white !important;
+    color: blue !important;
+    border-color: blue !important;
+    font-size: 1rem !important;
+  }
+  
+  .PaginationButton:disabled {
+    background-color: lightgray;
+    cursor: not-allowed;
+    /* width: 1.5rem;
+    height: 1.5rem; */
+    font-size: 0.75rem;
+  }
+  

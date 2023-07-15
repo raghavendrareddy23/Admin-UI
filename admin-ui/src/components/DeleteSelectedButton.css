@@ -1,0 +1,15 @@
+.DeleteSelectedButton {
+    background-color: red;
+    color: white;
+    border-radius: 5px;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    text-transform: capitalize; /* Make the text capitalized */
+  }
+  
+  .DeleteSelectedButton:hover {
+    background-color: darkred;
+  }
+  
