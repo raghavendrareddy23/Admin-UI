@@ -19,7 +19,7 @@ export default function AdminInterface() {
   const [totalPages, setTotalPages] = useState(1);
   const [selectedRows, setSelectedRows] = useState([]);
   const [editingRow, setEditingRow] = useState(null);
-  const [setSelectAllRows] = useState(false);
+  const [selectAllRows, setSelectAllRows] = useState(false);
 
   useEffect(() => {
     fetchUsers()
@@ -144,6 +144,7 @@ export default function AdminInterface() {
                 handleDeleteRow={handleDeleteRow}
                 editingRow={editingRow}
                 handleSelectAllRows={handleSelectAllRows}
+                selectAllRows={selectAllRows}
               />
             }
           </TableBody>
