@@ -69,7 +69,7 @@ export default function AdminInterface() {
     setSearchQuery(e.target.value);
     setCurrentPage(1); // Reset to the first page when search query changes
   };
-
+  
   // Handler for page change
   const handlePageChange = (page) => {
     setCurrentPage(page);
