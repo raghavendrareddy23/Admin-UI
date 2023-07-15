@@ -19,7 +19,7 @@ export default function AdminInterface() {
   const [totalPages, setTotalPages] = useState(1);
   const [selectedRows, setSelectedRows] = useState([]);
   const [editingRow, setEditingRow] = useState(null);
-  const [selectAllRows, setSelectAllRows] = useState(false);
+  const [setSelectAllRows] = useState(false);
 
   useEffect(() => {
     fetchUsers()
