@@ -1,6 +1,6 @@
 import React from "react";
 import { Button } from "@mui/material";
-import "./Pagination.css"
+import "./Pagination.css";
 
 const Pagination = ({ currentPage, totalPages, handlePageChange }) => {
   const renderPaginationButtons = () => {

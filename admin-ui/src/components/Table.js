@@ -39,7 +39,6 @@ const TableImplementation = ({
                 inputProps={{ "aria-label": "Select all rows" }}
               />
             </TableCell>
-            {/* <TableCell>ID</TableCell> */}
             <TableCell>Name</TableCell>
             <TableCell>Email</TableCell>
             <TableCell>Role</TableCell>
@@ -55,7 +54,6 @@ const TableImplementation = ({
                   onChange={() => handleRowSelect(user.id)}
                 />
               </TableCell>
-              {/* <TableCell>{user.id}</TableCell> */}
               <TableCell>
                 {editingRow === user.id ? (
                   <TextField

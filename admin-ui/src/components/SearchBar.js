@@ -1,6 +1,6 @@
 import React from "react";
 import { TextField } from "@mui/material";
-import "./SearchBar.css"
+import "./SearchBar.css";
 
 const SearchBar = ({ searchQuery, handleSearchChange }) => {
   return (

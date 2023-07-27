@@ -1,6 +1,6 @@
 import React from "react";
 import { Button } from "@mui/material";
-import "./DeleteSelectedButton.css"
+import "./DeleteSelectedButton.css";
 
 const DeleteSelectedButton = ({ handleDeleteSelected }) => {
   return (
