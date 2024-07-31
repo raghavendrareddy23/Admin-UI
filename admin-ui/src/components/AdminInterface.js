@@ -1,10 +1,5 @@
 import React, { useState, useEffect, useCallback } from "react";
-import {
-  Container,
-  Box,
-  Table,
-  TableBody
-} from "@mui/material";
+import { Container, Box, Table, TableBody } from "@mui/material";
 import TableImplementation from "./Table";
 import Pagination from "./Pagination";
 import SearchBar from "./SearchBar";
@@ -44,7 +39,7 @@ export default function AdminInterface() {
 
   useEffect(() => {
     // Recalculate total pages when search query or user data changes
-    calculateTotalPages(userData);
+    calculateTotalPages();
     setCurrentPage(1);
   }, [searchQuery, userData, calculateTotalPages]);
 
@@ -104,19 +99,16 @@ export default function AdminInterface() {
 
   // Handler for saving the edited row
   const handleSaveRow = (rowId) => {
-    // Implement the logic to save the edited row
     setEditingRow(null);
   };
 
   // Handler for deleting a row
   const handleDeleteRow = (rowId) => {
-    // Implement the logic to delete the row with the given ID from the userData state
     setUserData((prevData) => prevData.filter((user) => user.id !== rowId));
   };
 
   // Handler for deleting selected rows
   const handleDeleteSelected = () => {
-    // Implement the logic to delete the selected rows from the userData state
     setUserData((prevData) =>
       prevData.filter((user) => !selectedRows.includes(user.id))
     );
@@ -137,6 +129,7 @@ export default function AdminInterface() {
             {
               <TableImplementation
                 data={getCurrentPageData()}
+                setUserData={setUserData}
                 selectedRows={selectedRows}
                 handleRowSelect={handleRowSelect}
                 handleEditRow={handleEditRow}
