@@ -39,6 +39,17 @@ const TableImplementation = ({
     }));
   };
 
+  const handleSave = (user) => {
+    setUserData(prevData =>
+      prevData.map(prevUser =>
+        prevUser.id === user.id
+          ? { ...prevUser, ...editValues[user.id] }
+          : prevUser
+      )
+    );
+    handleSaveRow(user.id);
+  };
+
   return (
     <TableContainer>
       <Table>
@@ -76,23 +87,32 @@ const TableImplementation = ({
                   user.name
                 )}
               </TableCell>
-              <TableCell>{user.email}</TableCell>
-              <TableCell>{user.role}</TableCell>
+              <TableCell>
+                {editingRow === user.id ? (
+                  <TextField
+                    value={editValues[user.id]?.email || user.email}
+                    onChange={(e) => handleInputChange(user.id, 'email', e.target.value)}
+                  />
+                ) : (
+                  user.email
+                )}
+              </TableCell>
+              <TableCell>
+                {editingRow === user.id ? (
+                  <TextField
+                    value={editValues[user.id]?.role || user.role}
+                    onChange={(e) => handleInputChange(user.id, 'role', e.target.value)}
+                  />
+                ) : (
+                  user.role
+                )}
+              </TableCell>
               <TableCell>
                 {editingRow === user.id ? (
                   <Button
                     variant="text"
                     className="Icon-color"
-                    onClick={() => {
-                      setUserData((prevData) =>
-                        prevData.map((prevUser) =>
-                          prevUser.id === user.id
-                            ? { ...prevUser, name: editValues[user.id]?.name || prevUser.name }
-                            : prevUser
-                        )
-                      );
-                      handleSaveRow(user.id);
-                    }}
+                    onClick={() => handleSave(user)}
                   >
                     Save
                   </Button>
@@ -104,7 +124,9 @@ const TableImplementation = ({
                       setEditValues((prev) => ({
                         ...prev,
                         [user.id]: {
-                          name: user.name
+                          name: user.name,
+                          email: user.email,
+                          role: user.role
                         }
                       }));
                       handleEditRow(user.id);
