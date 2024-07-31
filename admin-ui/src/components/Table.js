@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   TableContainer,
   Table,
@@ -13,7 +13,7 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEdit } from "@fortawesome/free-solid-svg-icons";
 import { faTrashAlt } from "@fortawesome/free-regular-svg-icons";
-import "./Table.css"
+import "./Table.css";
 
 const TableImplementation = ({
   data,
@@ -27,6 +27,18 @@ const TableImplementation = ({
   selectAllRows,
   handleSelectAllRows
 }) => {
+  const [editValues, setEditValues] = useState({});
+
+  const handleInputChange = (id, field, value) => {
+    setEditValues(prev => ({
+      ...prev,
+      [id]: {
+        ...prev[id],
+        [field]: value
+      }
+    }));
+  };
+
   return (
     <TableContainer>
       <Table>
@@ -57,16 +69,8 @@ const TableImplementation = ({
               <TableCell>
                 {editingRow === user.id ? (
                   <TextField
-                    value={user.name}
-                    onChange={(e) =>
-                      setUserData((prevData) =>
-                        prevData.map((prevUser) =>
-                          prevUser.id === user.id
-                            ? { ...prevUser, name: e.target.value }
-                            : prevUser
-                        )
-                      )
-                    }
+                    value={editValues[user.id]?.name || user.name}
+                    onChange={(e) => handleInputChange(user.id, 'name', e.target.value)}
                   />
                 ) : (
                   user.name
@@ -79,7 +83,16 @@ const TableImplementation = ({
                   <Button
                     variant="text"
                     className="Icon-color"
-                    onClick={() => handleSaveRow(user.id)}
+                    onClick={() => {
+                      setUserData((prevData) =>
+                        prevData.map((prevUser) =>
+                          prevUser.id === user.id
+                            ? { ...prevUser, name: editValues[user.id]?.name || prevUser.name }
+                            : prevUser
+                        )
+                      );
+                      handleSaveRow(user.id);
+                    }}
                   >
                     Save
                   </Button>
@@ -87,7 +100,15 @@ const TableImplementation = ({
                   <Button
                     variant="text"
                     className="Icon-color"
-                    onClick={() => handleEditRow(user.id)}
+                    onClick={() => {
+                      setEditValues((prev) => ({
+                        ...prev,
+                        [user.id]: {
+                          name: user.name
+                        }
+                      }));
+                      handleEditRow(user.id);
+                    }}
                     data-testid="edit-button"
                   >
                     <FontAwesomeIcon icon={faEdit} />
