@@ -30,7 +30,7 @@ const TableImplementation = ({
   const [editValues, setEditValues] = useState({});
 
   const handleInputChange = (id, field, value) => {
-    setEditValues(prev => ({
+    setEditValues((prev) => ({
       ...prev,
       [id]: {
         ...prev[id],
@@ -40,8 +40,8 @@ const TableImplementation = ({
   };
 
   const handleSave = (user) => {
-    setUserData(prevData =>
-      prevData.map(prevUser =>
+    setUserData((prevData) =>
+      prevData.map((prevUser) =>
         prevUser.id === user.id
           ? { ...prevUser, ...editValues[user.id] }
           : prevUser
@@ -80,8 +80,8 @@ const TableImplementation = ({
               <TableCell>
                 {editingRow === user.id ? (
                   <TextField
-                    value={editValues[user.id]?.name || user.name}
-                    onChange={(e) => handleInputChange(user.id, 'name', e.target.value)}
+                    value={editValues[user.id]?.name ?? user.name}
+                    onChange={(e) => handleInputChange(user.id, "name", e.target.value)}
                   />
                 ) : (
                   user.name
@@ -90,8 +90,8 @@ const TableImplementation = ({
               <TableCell>
                 {editingRow === user.id ? (
                   <TextField
-                    value={editValues[user.id]?.email || user.email}
-                    onChange={(e) => handleInputChange(user.id, 'email', e.target.value)}
+                    value={editValues[user.id]?.email ?? user.email}
+                    onChange={(e) => handleInputChange(user.id, "email", e.target.value)}
                   />
                 ) : (
                   user.email
@@ -100,8 +100,8 @@ const TableImplementation = ({
               <TableCell>
                 {editingRow === user.id ? (
                   <TextField
-                    value={editValues[user.id]?.role || user.role}
-                    onChange={(e) => handleInputChange(user.id, 'role', e.target.value)}
+                    value={editValues[user.id]?.role ?? user.role}
+                    onChange={(e) => handleInputChange(user.id, "role", e.target.value)}
                   />
                 ) : (
                   user.role
