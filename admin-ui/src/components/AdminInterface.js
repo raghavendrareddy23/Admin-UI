@@ -126,20 +126,18 @@ export default function AdminInterface() {
       <Box>
         <Table>
           <TableBody>
-            {
-              <TableImplementation
-                data={getCurrentPageData()}
-                setUserData={setUserData}
-                selectedRows={selectedRows}
-                handleRowSelect={handleRowSelect}
-                handleEditRow={handleEditRow}
-                handleSaveRow={handleSaveRow}
-                handleDeleteRow={handleDeleteRow}
-                editingRow={editingRow}
-                handleSelectAllRows={handleSelectAllRows}
-                selectAllRows={selectAllRows}
-              />
-            }
+            <TableImplementation
+              data={getCurrentPageData()}
+              setUserData={setUserData}
+              selectedRows={selectedRows}
+              handleRowSelect={handleRowSelect}
+              handleEditRow={handleEditRow}
+              handleSaveRow={handleSaveRow}
+              handleDeleteRow={handleDeleteRow}
+              editingRow={editingRow}
+              handleSelectAllRows={handleSelectAllRows}
+              selectAllRows={selectAllRows}
+            />
           </TableBody>
         </Table>
       </Box>
